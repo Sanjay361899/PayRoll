@@ -1,85 +1,41 @@
-// Write your code here
-import {Link} from 'react-router-dom'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Stack from "@mui/material/Stack";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
+import AuthGuard from "../../guard/AuthGuard";
+import { hover } from "@testing-library/user-event/dist/hover";
 
-import ThemeContext from '../../context/ThemeContext'
-
-import './index.css'
-
-const Navbar = () => (
-  <ThemeContext.Consumer>
-    {value => {
-      const {isDarkTheme, toggleTheme} = value
-      return (
-        <>
-          {!isDarkTheme ? (
-            <div className="nav-bar-container-light">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/website-logo-light-theme-img.png"
-                className="website-logo"
-                alt="website logo"
-              />
-              <ul className="middle-items">
-                <li className="list-item">
-                  <Link to="/" className="link-light">
-                    Home
-                  </Link>
-                </li>
-                <li className="list-item">
-                  <Link to="/about" className="link-light">
-                    About
-                  </Link>
-                </li>
-              </ul>
-              <button
-                type="button"
-                className="theme-button"
-                testid="theme"
-                onClick={toggleTheme}
-              >
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/dark-theme-img.png"
-                  className="theme-img"
-                  alt="theme"
-                />
-              </button>
-            </div>
-          ) : (
-            <div className="nav-bar-container-dark">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/website-logo-dark-theme-img.png"
-                className="website-logo"
-                alt="website logo"
-              />
-              <ul className="middle-items">
-                <li className="list-item">
-                  <Link to="/" className="link-dark">
-                    Home
-                  </Link>
-                </li>
-                <li className="list-item">
-                  <Link to="/about" className="link-dark">
-                    About
-                  </Link>
-                </li>
-              </ul>
-              <button
-                type="button"
-                className="theme-button"
-                testid="theme"
-                onClick={toggleTheme}
-              >
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/light-theme-img.png"
-                  className="theme-img"
-                  alt="theme"
-                />
-              </button>
-            </div>
-          )}
-        </>
-      )
-    }}
-  </ThemeContext.Consumer>
-)
-
-export default Navbar
+function appBarLabel(label) {
+  return (
+    <Toolbar>
+      <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+        {label}
+      </Typography>
+    </Toolbar>
+  );
+}
+export default function Navigation() {
+  let { Logout } = React.useContext(AuthGuard);
+  return (
+    <Stack sx={{ mt: -2.5, backgroundColor: "black", opacity: 7 }}>
+      <AppBar position="static" sx={{ backgroundColor: "black", opacity: 7.9 }}>
+        {appBarLabel("PayRol")}
+        <Button
+          sx={{
+            backgroundColor: "white",
+            borderRadius: 0,
+            color: "black",
+            "&:hover": {
+              color: "white",
+            },
+          }}
+          onClick={Logout}
+        >
+          LogOut
+        </Button>
+      </AppBar>
+    </Stack>
+  );
+}

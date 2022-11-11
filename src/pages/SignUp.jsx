@@ -16,12 +16,26 @@ import { Paper } from "@mui/material";
 import CurrencyRupeeSharpIcon from "@mui/icons-material/CurrencyRupeeSharp";
 import { Link } from "react-router-dom";
 import AuthGuard from "../guard/AuthGuard";
+import axios from "axios";
 
 const theme = createTheme();
 
 export default function SignUp() {
-  let { RegisterUser,roles } = React.useContext(AuthGuard);
-  console.log(roles,'roles data is here in signup');
+  const [role, setRole] = React.useState([]);
+  React.useEffect(() => {
+     axios
+      .get("http://3.108.151.73/api/roles", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((result) => {
+        setRole(result.data.roles.data);
+      });
+  }, []);
+
+  console.log("userroles", role);
+  let { RegisterUser } = React.useContext(AuthGuard);
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -86,7 +100,7 @@ export default function SignUp() {
                     fullWidth
                     id="email"
                     label="Email Address"
-                    name="emai0l"
+                    name="email"
                     autoComplete="email"
                   />
                 </Grid>
@@ -101,7 +115,7 @@ export default function SignUp() {
                     autoComplete="password"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
@@ -111,14 +125,17 @@ export default function SignUp() {
                     id="role_id"
                     autoComplete="role_id"
                   />
+                </Grid> */}
+                <Grid item xs={12}>
+                  
+                    <select 
+                      required
+                    >{role.map((roles,i) => (
+                      <option id={roles.id}  
+                      type={roles.id} name={roles.id} value={roles.id} autoComplete={roles.id} key={i} onChange={RegisterUser}>{roles.id}</option>
+                      ))}
+                    </select>
                 </Grid>
-                {/* {roles.map((e)=>(
-                <div class="mui-select">
-                  <select>
-                    <option>{e.name}</option>
-                  </select>
-                  <label>Select Example</label>
-                </div>))} */}
               </Grid>
               <Button
                 type="submit"

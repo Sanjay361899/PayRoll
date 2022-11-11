@@ -35,21 +35,7 @@ export const AuthProvider = ({ children }) => {
         navigate("/");
       });
   };
-  let roles = async () => {
-    axios
-      .get("http://3.108.151.73/api/roles", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        return res
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  
  
   let RegisterUser = async (e) => {
     e.preventDefault();
@@ -61,7 +47,7 @@ export const AuthProvider = ({ children }) => {
           email: e.target.email.value,
           password: e.target.password.value,
           password_confirmation:e.target.password.value,
-          role_id: e.target.role_id.value,
+          role_id:e.target.value,
         },
         {
           headers: {
@@ -70,7 +56,7 @@ export const AuthProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        console.log(res, "register");
+        console.log( "register",res);
         navigate("/");
       });
   };
@@ -78,13 +64,13 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUser(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("role_id");
     navigate("/login");
   };
   let contextData = {
     loginUser: loginUser,
     user: user,
     Logout: Logout,
-    roles: roles,
     RegisterUser: RegisterUser,
   };
   return (
