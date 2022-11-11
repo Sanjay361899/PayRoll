@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       .then((res) => {
         const data = res.data;
         console.log("api res", data);
+        console.log("api res", data);
         setAuthToken(data);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("role_id",data.user.role_id);
