@@ -52,7 +52,7 @@ const navigate= useNavigate();
 console.log('token', user);
   return (
     !user?(<ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container className='login-page' sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -81,7 +81,7 @@ console.log('token', user);
             }}
           >
   
-  <Typography  component="main" variant="h5">
+  <Typography  variant="h5">
           <CurrencyRupeeSharpIcon/> PayRoll
         </Typography>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>

@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
         console.log("api res", data);
         setAuthToken(data);
         localStorage.setItem("token", data.access_token);
-        localStorage.setItem("role_id", data.user.role_id);
+        localStorage.setItem("role_id", data.personalUserData.role_id);
         setUser(localStorage.getItem("token"));
         navigate("/");
       });

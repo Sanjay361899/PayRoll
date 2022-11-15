@@ -1,7 +1,6 @@
 import {
   Button,
   Card,
-  CardActions,
   CardContent,
   Typography,
 } from "@mui/material";
@@ -30,9 +29,9 @@ const Main = () => {
   const [punch, setPunch] = useState();
 
   return (
-    <div>
+    <div className="main-dash">
       <Button
-        sx={{ display: "flex", ml: 170, mt: 2 }}
+        sx={{ display: "flex" }}
         onClick={() => {
           setPunch(new Date().toLocaleString());
         }}
@@ -48,7 +47,7 @@ const Main = () => {
       {/* cards sections showing number of employes  */}
 
       <div style={{ display: "flex" }}>
-        <Card sx={{ maxWidth: 500, ml: 5, minWidth: 430, mt: 2 }}>
+        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2 }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -61,14 +60,11 @@ const Main = () => {
               <GroupIcon /> <h3 >{user}</h3>
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
         </Card>
 
         {/* showing Present Employees */}
 
-        <Card sx={{ maxWidth: 500, ml: 5, minWidth: 430, mt: 2 }}>
+        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2 }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -81,14 +77,11 @@ const Main = () => {
               <PersonAddIcon />
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
         </Card>
 
         {/* Absent Employees */}
 
-        <Card sx={{ maxWidth: 500, minWidth: 430, ml: 5, mt: 2 }}>
+        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2  }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -101,9 +94,6 @@ const Main = () => {
               <PersonOffIcon />
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
         </Card>
       </div>
     </div>

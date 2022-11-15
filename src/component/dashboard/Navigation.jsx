@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import AuthGuard from "../../guard/AuthGuard";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 function appBarLabel(label) {
   return (
@@ -20,12 +19,13 @@ export default function Navigation() {
   let { Logout } = React.useContext(AuthGuard);
   return (
     <Stack sx={{ mt: -2.5, backgroundColor: "black", opacity: 7 }}>
-      <AppBar position="static" sx={{ backgroundColor: "black", opacity: 7.9 }}>
+      <AppBar className="app-dash" position="static" sx={{ backgroundColor: "black", opacity: 7.9  }}>
         {appBarLabel("PayRol")}
+        <div style={{display:'flex', flexDirection:'row-reverse', marginBottom:"20px",marginTop:"-20px", marginRight:"20px"}}>
         <Button
           sx={{
             backgroundColor: "white",
-            borderRadius: 0,
+
             color: "black",
             "&:hover": {
               color: "white",
@@ -35,6 +35,7 @@ export default function Navigation() {
         >
           LogOut
         </Button>
+        </div>
       </AppBar>
     </Stack>
   );

@@ -10,7 +10,7 @@ export const SideBarUser = [
     },
     {
         title:'Details',
-        path:'/',
+        path:'/details',
         icons:<DescriptionIcon/>
     },
     {

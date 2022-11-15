@@ -38,7 +38,7 @@ export default function SignUp() {
   let { RegisterUser } = React.useContext(AuthGuard);
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container  sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -66,7 +66,7 @@ export default function SignUp() {
               alignItems: "center",
             }}
           >
-            <Typography component="main" variant="h5">
+            <Typography variant="h5">
               <CurrencyRupeeSharpIcon /> PayRoll
             </Typography>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
