@@ -1,5 +1,6 @@
 import { CssBaseline } from "@mui/material";
 import React, { useContext } from "react";
+import Main from "../../component/dashboard/Main";
 import Navigation from "../../component/dashboard/Navigation";
 import SideBar from "../../component/dashboard/SideBar";
 import AuthGuard from "../../guard/AuthGuard";
@@ -11,7 +12,9 @@ const Home = () => {
       <CssBaseline />
       <SideBar>
         <Navigation />
-        <h1> Home IS HERE</h1>
+        <div>
+        <Main/>
+        </div>
       </SideBar>
     </div>
   );

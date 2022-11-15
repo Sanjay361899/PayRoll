@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate("");
   let loginUser = async (e) => {
     e.preventDefault();
-
+    
     await axios
       .post("http://3.108.151.73/api/login", {
         email: e.target.email.value,
@@ -30,36 +30,44 @@ export const AuthProvider = ({ children }) => {
         console.log("api res", data);
         setAuthToken(data);
         localStorage.setItem("token", data.access_token);
-        localStorage.setItem("role_id",data.user.role_id);
+        localStorage.setItem("role_id", data.user.role_id);
         setUser(localStorage.getItem("token"));
         navigate("/");
       });
   };
-  
- 
+
   let RegisterUser = async (e) => {
+    // console.log("u are getting datas:",e.target.n.value)
     e.preventDefault();
     await axios
       .post(
         "http://3.108.151.73/api/register",
-        {
+       {
           name: e.target.name.value,
           email: e.target.email.value,
           password: e.target.password.value,
-          password_confirmation:e.target.password.value,
-          role_id:e.target.value,
+          password_confirmation: e.target.password.value,
+          role_id: e.target.role_id.value,
         },
+
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
           },
         }
       )
       .then((res) => {
-        console.log( "register",res);
+        console.log("register", res);
         navigate("/");
+      })
+      .catch((error) => {
+        console.log("error:", error);
       });
   };
+
+  
+
   let Logout = () => {
     setAuthToken(null);
     setUser(null);

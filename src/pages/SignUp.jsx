@@ -115,7 +115,7 @@ export default function SignUp() {
                     autoComplete="password"
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
@@ -125,17 +125,19 @@ export default function SignUp() {
                     id="role_id"
                     autoComplete="role_id"
                   />
-                </Grid> */}
-                <Grid item xs={12}>
+                </Grid>
+                {/* <Grid item xs={12}>
                   
-                    <select 
-                      required
-                    >{role.map((roles,i) => (
+                    <select id="authority">
+                      {
+                      role.map((roles,i) => (
                       <option id={roles.id}  
-                      type={roles.id} name={roles.id} value={roles.id} autoComplete={roles.id} key={i} onChange={RegisterUser}>{roles.id}</option>
+                      type={roles.id} name={roles} value={roles}
+                      autoComplete={roles.id} key={i}>{roles.id}</option>
                       ))}
                     </select>
-                </Grid>
+                  
+                </Grid> */}
               </Grid>
               <Button
                 type="submit"

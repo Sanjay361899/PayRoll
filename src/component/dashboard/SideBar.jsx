@@ -17,7 +17,7 @@ const SideBar = ({children}) => {
         </div>
         {
             SideBarUser.map((items, index)=>(
-                 <NavLink to={items.path} className='link' activeClassName='active' key={index} >
+                 <NavLink to={items.path} className='link' key={index} >
                     <div className="icon">{items.icons}</div>
                     <div style={{display: isOpen?"block":"none"}} className="link_text">{items.title}</div>
                  </NavLink>
