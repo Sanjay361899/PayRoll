@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import FlareIcon from "@mui/icons-material/Flare";
-import { SideBarUser } from "../../pages/DashBoard/sidebardata/SideBarUser";
+import {  SideBarUser } from "../sidebardata/SideBarUser";
 import adminimage from "../../images/adminimage.png";
 import { Link, NavLink } from "react-router-dom";
 
 const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
+  const role_id= localStorage.getItem("role_id")
+  const SideBarUsers= SideBarUser(role_id)
+  console.log("sidebargettingdata===========",SideBarUsers);
   return (
     <div className="container">
       <div
         style={{
-        width: isOpen ? "300px" : "50px",
+        width: isOpen ? "220px" : "50px",
           backgroundColor: isOpen ? "red" : "black",
         }}
         className="sidebar"
@@ -34,7 +36,7 @@ const SideBar = ({ children }) => {
             <FlareIcon onMouseOver={toggle} />
           </div>
         </div>
-        {SideBarUser.map((items, index) => (
+        {SideBarUsers && SideBarUsers.map((items, index) => (
           <NavLink to={items.path} className="link" key={index}>
             <div className="icon">{items.icons}</div>
             <div
@@ -46,7 +48,7 @@ const SideBar = ({ children }) => {
           </NavLink>
         ))}
       </div>
-      <main className="sidebar-main" >{children}</main>
+      <main className="sidebar-main" style={{marginLeft:isOpen?"220px":"80px"}}>{children}</main>
     </div>
   );
 };

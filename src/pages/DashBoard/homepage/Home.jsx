@@ -1,9 +1,6 @@
-import { CssBaseline } from "@mui/material";
-import React, { useContext } from "react";
-import Main from "../../../component/dashboard/Main";
-import Navigation from "../../../component/dashboard/Navigation";
-import SideBar from "../../../component/dashboard/SideBar";
-import AuthGuard from "../../../guard/AuthGuard";
+import Main from "../../../component/maindashboard/Main";
+import Navigation from "../../../component/templatedashboard/Navigation";
+import SideBar from "../../../component/templatedashboard/SideBar";
 import "./index.css";
 const Home = () => {
   return (

@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import axios from "axios";
 
 const Main = () => {
     const[user, setUser]=useState();
+
     useEffect(()=>{
 
          axios
@@ -26,28 +28,28 @@ const Main = () => {
             setUser(res.data.data.length);
           });
       },[])
-  const [punch, setPunch] = useState();
-
+  const [punchTime, setPunchTime] = useState();
+  const [punch, setPunch]= useState(true)
   return (
-    <div className="main-dash">
+    <Box component="div" className="main-dash">
       <Button
-        sx={{ display: "flex" }}
         onClick={() => {
-          setPunch(new Date().toLocaleString());
+          setPunchTime(new Date().toLocaleString());
+          setPunch(!punch)
         }}
         variant="contained"
-        color="success"
+        color ={ punch ? "success":  "secondary" }
       >
-        {!punch ? "PunchIn" : "PunchOut"}
+        { punch ?"punchIn" : "punchOut"}
       </Button>
-      {!punch
-        ? console.log("nothing in punch")
-        : console.log("punch time", punch)}
+      {!punchTime
+        ? console.log("nothing in punchTime")
+        : console.log("punchTime time", punchTime)}
 
       {/* cards sections showing number of employes  */}
 
-      <div style={{ display: "flex" }}>
-        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2 }}>
+      <Box component="div" sx={{ display:"flex", flexWrap: 'wrap', flexGrow:1 }} >
+        <Card sx={{ maxWidth: 1200, ml:2, mt:2}}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -55,16 +57,18 @@ const Main = () => {
               gutterBottom
             >
               Total Employees
+              <button className="btn btn-danger">abc</button>
             </Typography>
             <Typography variant="body2">
               <GroupIcon /> <h3 >{user}</h3>
             </Typography>
           </CardContent>
+          
         </Card>
 
         {/* showing Present Employees */}
 
-        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2 }}>
+        <Card sx={{ maxWidth: 1200, ml:2, mt:2 }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -81,7 +85,7 @@ const Main = () => {
 
         {/* Absent Employees */}
 
-        <Card sx={{ maxWidth: 1100, ml: 5, mt: 2  }}>
+        <Card sx={{ maxWidth: 1200, ml:2, mt:2 }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
@@ -95,8 +99,8 @@ const Main = () => {
             </Typography>
           </CardContent>
         </Card>
-      </div>
-    </div>
+      </Box>
+      </Box>
   );
 };
 

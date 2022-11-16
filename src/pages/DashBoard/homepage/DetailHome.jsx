@@ -1,7 +1,7 @@
 import React from "react";
-import UserDetail from "../../../component/dashboard/detailsUser/UserDetail";
-import Navigation from "../../../component/dashboard/Navigation";
-import SideBar from "../../../component/dashboard/SideBar";
+import UserDetail from "../../../component/maindashboard/UserDetail";
+import Navigation from "../../../component/templatedashboard/Navigation";
+import SideBar from "../../../component/templatedashboard/SideBar";
 import "./index.css";
 const DetailHome = () => {
   return (

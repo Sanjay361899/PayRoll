@@ -2,9 +2,9 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import Home from "./pages/DashBoard/homepage/Home";
-import Login from "./pages/Login";
+import Login from "./pages/Authentication/Login";
 import { AuthProvider } from "./guard/AuthGuard";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Authentication/SignUp";
 import DetailHome from "./pages/DashBoard/homepage/DetailHome";
 
 function App() {

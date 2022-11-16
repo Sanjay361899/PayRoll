@@ -1,16 +1,13 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Await, Navigate, useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
 const AuthGuard = createContext();
 export default AuthGuard;
 
 export const AuthProvider = ({ children }) => {
-  // useEffect(()=>{
-  //   console.log('roles useeffect:',roles);
-  // },[])
-  let [authToken, setAuthToken] = useState(
-    localStorage.getItem("token") ? localStorage.getItem("token") : null
+  let [roleid, setRoleid] = useState(
+    localStorage.getItem("role_id") ? localStorage.getItem("role_id") : null
   );
   let [user, setUser] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : null
@@ -28,9 +25,11 @@ export const AuthProvider = ({ children }) => {
         const data = res.data;
         console.log("api res", data);
         console.log("api res", data);
-        setAuthToken(data);
+        
         localStorage.setItem("token", data.access_token);
-        localStorage.setItem("role_id", data.personalUserData.role_id);
+        localStorage.setItem("role_id", data.personalUserData[0].role_id);
+        setRoleid(localStorage.getItem("role_id"));
+        console.log("login role------------------",typeof(localStorage.getItem("role_id")))
         setUser(localStorage.getItem("token"));
         navigate("/");
       });
@@ -69,7 +68,7 @@ export const AuthProvider = ({ children }) => {
   
 
   let Logout = () => {
-    setAuthToken(null);
+    setRoleid(null);
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("role_id");
@@ -77,6 +76,7 @@ export const AuthProvider = ({ children }) => {
   };
   let contextData = {
     loginUser: loginUser,
+    roleid:roleid,
     user: user,
     Logout: Logout,
     RegisterUser: RegisterUser,

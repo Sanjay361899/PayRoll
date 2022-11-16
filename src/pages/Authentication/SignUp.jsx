@@ -11,11 +11,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import loginimage from "../images/loginimage.png";
+import loginimage from "../../images/loginimage.png";
 import { Paper } from "@mui/material";
 import CurrencyRupeeSharpIcon from "@mui/icons-material/CurrencyRupeeSharp";
 import { Link } from "react-router-dom";
-import AuthGuard from "../guard/AuthGuard";
+import AuthGuard from "../../guard/AuthGuard";
 import axios from "axios";
 
 const theme = createTheme();
