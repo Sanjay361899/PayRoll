@@ -1,11 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./utils/PrivateRoutes";
-import Home from "./pages/DashBoard/homepage/Home";
+import Home from "./pages/DashBoard/Home";
 import Login from "./pages/Authentication/Login";
 import { AuthProvider } from "./guard/AuthGuard";
 import SignUp from "./pages/Authentication/SignUp";
-import DetailHome from "./pages/DashBoard/homepage/DetailHome";
+import DetailHome from "./pages/DashBoard/DetailHome";
+import Profiles from "./pages/DashBoard/Profiles";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route element={<Home />} path="/" />
             <Route element={<DetailHome />} path="/details" />
+            <Route element={<Profiles/>} path="/profile" />
           </Route>
           <Route element={<SignUp />} path="/signup" />
           <Route element={<Login />} path="/login" />

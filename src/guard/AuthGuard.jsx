@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate("");
   let loginUser = async (e) => {
     e.preventDefault();
-    
+
     await axios
       .post("http://3.108.151.73/api/login", {
         email: e.target.email.value,
@@ -25,11 +25,17 @@ export const AuthProvider = ({ children }) => {
         const data = res.data;
         console.log("api res", data);
         console.log("api res", data);
-        
+      data.personalUserData[0].role_id<4?localStorage.setItem(
+          "allEmployeesData",
+          JSON.stringify(data.allEmployees)
+        ):console.log("User")
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("role_id", data.personalUserData[0].role_id);
         setRoleid(localStorage.getItem("role_id"));
-        console.log("login role------------------",typeof(localStorage.getItem("role_id")))
+        console.log(
+          "login role------------------",
+          typeof localStorage.getItem("role_id")
+        );
         setUser(localStorage.getItem("token"));
         navigate("/");
       });
@@ -41,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     await axios
       .post(
         "http://3.108.151.73/api/register",
-       {
+        {
           name: e.target.name.value,
           email: e.target.email.value,
           password: e.target.password.value,
@@ -65,18 +71,15 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  
-
   let Logout = () => {
     setRoleid(null);
     setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("role_id");
+    localStorage.clear();
     navigate("/login");
   };
   let contextData = {
     loginUser: loginUser,
-    roleid:roleid,
+    roleid: roleid,
     user: user,
     Logout: Logout,
     RegisterUser: RegisterUser,
