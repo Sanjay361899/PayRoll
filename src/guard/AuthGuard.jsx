@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
       .then((res) => {
         const data = res.data;
         console.log("api res", data);
-        console.log("api res", data);
       data.personalUserData[0].role_id<4?localStorage.setItem(
           "allEmployeesData",
           JSON.stringify(data.allEmployees)
@@ -32,17 +31,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("role_id", data.personalUserData[0].role_id);
         setRoleid(localStorage.getItem("role_id"));
-        console.log(
-          "login role------------------",
-          typeof localStorage.getItem("role_id")
-        );
         setUser(localStorage.getItem("token"));
         navigate("/");
       });
   };
 
   let RegisterUser = async (e) => {
-    // console.log("u are getting datas:",e.target.n.value)
     e.preventDefault();
     await axios
       .post(
@@ -63,7 +57,6 @@ export const AuthProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        console.log("register", res);
         navigate("/");
       })
       .catch((error) => {

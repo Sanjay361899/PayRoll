@@ -33,10 +33,11 @@ export default function SignUp() {
         setRole(result.data.roles.data);
       });
   }, []);
-
-  console.log("userroles", role);
+  const role_id=localStorage.getItem("role_id")
   let { RegisterUser } = React.useContext(AuthGuard);
   return (
+    <>
+    { role_id<=3&&
     <ThemeProvider theme={theme}>
       <Grid container  sx={{ height: "100vh" }}>
         <CssBaseline />
@@ -126,18 +127,6 @@ export default function SignUp() {
                     autoComplete="role_id"
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
-                  
-                    <select id="authority">
-                      {
-                      role.map((roles,i) => (
-                      <option id={roles.id}  
-                      type={roles.id} name={roles} value={roles}
-                      autoComplete={roles.id} key={i}>{roles.id}</option>
-                      ))}
-                    </select>
-                  
-                </Grid> */}
               </Grid>
               <Button
                 type="submit"
@@ -152,5 +141,5 @@ export default function SignUp() {
         </Grid>
       </Grid>
     </ThemeProvider>
-  );
+  }</>  );
 }

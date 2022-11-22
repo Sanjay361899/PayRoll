@@ -1,13 +1,12 @@
 import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
-import DescriptionIcon from "@mui/icons-material/Description";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import GroupsIcon from '@mui/icons-material/Groups';
 export const SideBarUser = (role_id) => {
   
-  console.log("role-id in data sidebar:",role_id)
 
-  if(role_id === "1") 
+  if(role_id <= "3") 
      {
         return([
         {
@@ -23,7 +22,7 @@ export const SideBarUser = (role_id) => {
         {
           title: "Details",
           path: "/details",
-          icons: <DescriptionIcon />,
+          icons: <GroupsIcon />,
         },
         {
           title: "Attendance",
