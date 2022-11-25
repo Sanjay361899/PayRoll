@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { Await, Navigate, useNavigate } from "react-router-dom";
 import Loader from "react-js-loader";
+import img from "../images/logo.png"
 const AuthGuard = createContext();
 export default AuthGuard;
 
@@ -15,6 +16,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate("");
   let loginUser = async (e) => {
     e.preventDefault();
+    console.log("login auth==", e)
 
     await axios
       .post("http://3.108.151.73/api/login", {
@@ -38,15 +40,27 @@ export const AuthProvider = ({ children }) => {
 
   let RegisterUser = async (e) => {
     e.preventDefault();
+    console.log("register authguard",e.target.file.value)
     await axios
       .post(
-        "http://3.108.151.73/api/register",
+        "http://3.108.151.73/api/employees",
         {
-          name: e.target.name.value,
-          email: e.target.email.value,
-          password: e.target.password.value,
-          password_confirmation: e.target.password.value,
-          role_id: e.target.role_id.value,
+          name:"demo12",
+          email: "demo1123445@gmail.com",
+          password: 12345678,
+          password_confirmation: 12345678,
+          role_id: 2,
+          employee_id:"F124",
+          designation_id:2,
+          department_id:2,
+          employee_status_id:2,
+          gender:"female",
+          about_me:"Developer",
+          contact_number:5645645649,
+          emergency_contact_number:1231231251,
+          address:"aaass",
+          date_of_birth:'2011-11-15',
+         profile_picture:`http://3.108.151.73/employee/profileImages/Capture_1669292654.PNG`,
         },
 
         {

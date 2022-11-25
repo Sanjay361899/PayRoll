@@ -4,9 +4,10 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import Home from "./pages/DashBoard/Home";
 import Login from "./pages/Authentication/Login";
 import { AuthProvider } from "./guard/AuthGuard";
-import SignUp from "./pages/Authentication/SignUp";
 import DetailHome from "./pages/DashBoard/DetailHome";
 import Profiles from "./pages/DashBoard/Profiles";
+import AddMember from "./pages/DashBoard/AddMember";
+import NotFound from "./component/NotFound/NotFound";
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
             <Route element={<Home />} path="/" />
             <Route element={<DetailHome />} path="/details" />
             <Route element={<Profiles />} path="/profile" />
-            <Route element={<SignUp />} path="/signup" />
+            <Route element={<AddMember />} path="/signup" />
           </Route>
           <Route element={<Login />} path="/login" />
+          <Route element={<NotFound/>} path="*"/>
         </Routes>
       </AuthProvider>
     </div>
