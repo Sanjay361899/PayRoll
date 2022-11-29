@@ -68,7 +68,7 @@ const Navigation = () => {
         <Icons>
           {role_id <= 3 && (
             <Button style={{ backgroundColor: "#81B441", color: "white" }}>
-              <Link style={{ color: "white" }} to="/signup">
+              <Link style={{ color: "white", textDecoration:"none" }} to="/signup">
                 Add Member
               </Link>
             </Button>

@@ -4,9 +4,10 @@ import { Box } from '@mui/system';
 
 import Navigation from '../../component/templatedashboard/Navigation';
 import SideBar from '../../component/templatedashboard/SideBar';
-import SignUp from '../Authentication/AddMember';
+import EditUserDetail from '../../component/CRUD/EditUserDetail';
 
-const AddMember = () => {
+
+const EditMember = () => {
     const [open , setOpen]=useState(true)
 
     return (
@@ -14,11 +15,11 @@ const AddMember = () => {
         <Navigation/>
       
           <SideBar onChange={(value)=>setOpen(value)}/>
-          <SignUp open={open}/>
+          <EditUserDetail open={open}/>
           
       </Box>
     
     );
 }
 
-export default AddMember
+export default EditMember

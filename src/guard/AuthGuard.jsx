@@ -40,33 +40,33 @@ export const AuthProvider = ({ children }) => {
 
   let RegisterUser = async (e) => {
     e.preventDefault();
-    console.log("register authguard",e.target.file.value)
+    console.log("register authguard+++++++++++++++++++++++++++++++++++",e.target.profile_picture.value)
     await axios
       .post(
         "http://3.108.151.73/api/employees",
         {
-          name:"demo12",
-          email: "demo1123445@gmail.com",
-          password: 12345678,
-          password_confirmation: 12345678,
-          role_id: 2,
-          employee_id:"F124",
-          designation_id:2,
-          department_id:2,
-          employee_status_id:2,
-          gender:"female",
-          about_me:"Developer",
-          contact_number:5645645649,
-          emergency_contact_number:1231231251,
-          address:"aaass",
-          date_of_birth:'2011-11-15',
-         profile_picture:`http://3.108.151.73/employee/profileImages/Capture_1669292654.PNG`,
+          name:e.target.name.value,
+          email: e.target.email.value,
+          password: e.target.password.value,
+          password_confirmation: e.target.password.value,
+          role_id:e.target[6].value ,
+          employee_id:e.target.employee_id.value,
+          designation_id:e.target.designation_id.value,
+          department_id:e.target.department_id.value,
+          employee_status_id:e.target.employee_status_id.value,
+          gender:e.target.gender.value,
+          about_me:e.target.about_me.value,
+          contact_number:e.target.contact_number.value,
+          emergency_contact_number:e.target.emergency_contact_number.value,
+          address:e.target.address.value,
+          date_of_birth:e.target.date_of_birth.value,
+         profile_picture:e.target.profile_picture.value,
         },
 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       )

@@ -9,10 +9,37 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function UserDetail({ open }) {
-  const allEmployeesData = JSON.parse(localStorage.getItem("allEmployeesData"));
+  // const allEmployeesData = JSON.parse(localStorage.getItem("allEmployeesData"));
+  //get all employees list :
+  const [allEmployeesData, setAllEmployeesData] = React.useState();
+  React.useEffect(() => {
+    axios
+      .get(`http://3.108.151.73/api/employees`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        setAllEmployeesData(res);
+      });
+  }, []);
 
+  //to delete a user inside a table
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://3.108.151.73/api/employees/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log("delete", res)
+      });
+  };
   return (
     <>
       {allEmployeesData && (
@@ -32,7 +59,7 @@ export default function UserDetail({ open }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {allEmployeesData.data.map((row, i) => (
+                {allEmployeesData.data.data.map((row, i) => (
                   <TableRow
                     key={i}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -47,8 +74,19 @@ export default function UserDetail({ open }) {
                         variant="contained"
                         style={{ backgroundColor: "#81B441" }}
                       >
-                        Edit
+                        <Link to={"/edit/" + row.id}>Edit</Link>
                       </Button>
+                      {row.role_id > 1 ? (
+                        <Button
+                          onClick={() => handleDelete(row.id)}
+                          variant="contained"
+                          style={{ backgroundColor: "red" }}
+                        >
+                          Delete
+                        </Button>
+                      ) : (
+                        ""
+                      )}
                     </TableCell>
                   </TableRow>
                 ))}

@@ -8,6 +8,7 @@ import DetailHome from "./pages/DashBoard/DetailHome";
 import Profiles from "./pages/DashBoard/Profiles";
 import AddMember from "./pages/DashBoard/AddMember";
 import NotFound from "./component/NotFound/NotFound";
+import EditMember from "./pages/DashBoard/EditMember";
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
             <Route element={<DetailHome />} path="/details" />
             <Route element={<Profiles />} path="/profile" />
             <Route element={<AddMember />} path="/signup" />
+            <Route element={<EditMember />} path="/edit/:id" />
           </Route>
-          <Route element={<Login />} path="/login" />
+          <Route element={<Login/>} path="/login" />
           <Route element={<NotFound/>} path="*"/>
         </Routes>
       </AuthProvider>

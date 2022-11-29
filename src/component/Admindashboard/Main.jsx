@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import GroupIcon from "@mui/icons-material/Group";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import axios from "axios";
 
 const Main = ({open}) => {
   const totalEmployeesExist = JSON.parse(
@@ -13,6 +14,21 @@ const Main = ({open}) => {
     : 0;
   const [punchTime, setPunchTime] = useState();
   const [punch, setPunch] = useState(true);
+  const [ip, setIP] = useState('');
+
+  //creating function to load ip address from the API
+  const getData = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    console.log(res.data);
+    setIP(res.data.IPv4)
+  }
+  
+  useEffect( () => {
+    //passing getData method to the lifecycle method
+    getData()
+
+  }, [])
+
   return (
     <Box
       component="div"
