@@ -7,6 +7,7 @@ import { Password } from "@mui/icons-material";
 const EditUserDetail = ({ open }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const roleid = localStorage.getItem("role_id");
   const [emp, setEmp] = useState({
     id: "",
     name: "",
@@ -83,6 +84,7 @@ const EditUserDetail = ({ open }) => {
     });
   }
 
+  
   return (
     <Box
       component="div"
@@ -108,10 +110,10 @@ const EditUserDetail = ({ open }) => {
           <input onChange={handleChange} type="text" value={name} name="name" class="form-control"  />
         </div>
         {/* <div class="col-md-1"></div> */}
-        <div class="form-group col-md-4">
+     {roleid<2 &&   <div class="form-group col-md-4">
           <label for="exampleInputPassword1">Role Id</label>
           <input onChange={handleChange} value={role_id} type="number" name="role_id" class="form-control"  />
-        </div>
+        </div>}
         <div class="col-md-1"></div>
         <div class="form-group col-md-3">
           <label for="exampleInputPassword1">Email</label>
@@ -144,36 +146,36 @@ const EditUserDetail = ({ open }) => {
         <input onChange={handleChange} type="number" value={contact_number} name="contact_number" class="form-control"  />
       </div>
       <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
+      {roleid<3 &&<div class="form-group col-md-3 my-3">
         <label for="exampleInputPassword1">Emergency Contact Number</label>
         <input onChange={handleChange} value={emergency_contact_number} type="text" name="emergency_contact_number" class="form-control"    />
-      </div>
+      </div>}
 
-      <div class="form-group col-md-4 my-3">
+      {roleid<3 &&  <div class="form-group col-md-4 my-3">
         <label for="exampleInputEmail1 ">Employee ID </label>
         <input onChange={handleChange} value={employee_id} type="varchar" name="employee_id" class="form-control" />
-      </div>
+      </div>}
       <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
+      {roleid<3 && <div class="form-group col-md-3 my-3">
         <label for="exampleInputPassword1">Designation ID</label>
         <input onChange={handleChange} type="varchar" value={designation_id} name="designation_id" class="form-control" />
-      </div>
-      <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
+      </div>}
+        <div class="col-md-1"></div>
+        {roleid<3 && <div class="form-group col-md-3 my-3">
         <label for="exampleInputPassword1">Department ID</label>
         <input onChange={handleChange} type="varchar" value={department_id} name="department_id" class="form-control" />
-      </div>
+      </div>}
       
 
-      <div class="form-group col-md-4 my-3">
+      {roleid<3 &&  <div class="form-group col-md-4 my-3">
         <label for="exampleInputEmail1 ">Employee Status ID </label>
         <input onChange={handleChange} value={employee_status_id} type="varchar" name="employee_status_id" class="form-control" />
-      </div>
+      </div>}
       <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
+      {roleid<3 &&<div class="form-group col-md-3 my-3">
         <label for="exampleInputPassword1">Gender </label>
         <input onChange={handleChange} value={gender} type="text" name="gender" class="form-control"/>
-      </div>
+      </div>}
       <div class="col-md-1"></div>
       <div class="form-group col-md-3 my-3">
         <label for="exampleInputPassword1">About Me</label>

@@ -16,6 +16,7 @@ export default function UserDetail({ open }) {
   // const allEmployeesData = JSON.parse(localStorage.getItem("allEmployeesData"));
   //get all employees list :
   const [allEmployeesData, setAllEmployeesData] = React.useState();
+  const roleid=localStorage.getItem("role_id")
   React.useEffect(() => {
     axios
       .get(`http://3.108.151.73/api/employees`, {
@@ -55,11 +56,11 @@ export default function UserDetail({ open }) {
                   <TableCell>Employee Id</TableCell>
                   <TableCell align="left">Name</TableCell>
                   <TableCell align="left">Email</TableCell>
-                  <TableCell align="left">Action</TableCell>
+                  <TableCell align="left"><Button variant="outlined" component="label" >Action</Button></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {allEmployeesData.data.data.map((row, i) => (
+                { allEmployeesData.data.data.map((row, i) => (
                   <TableRow
                     key={i}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -72,9 +73,9 @@ export default function UserDetail({ open }) {
                     <TableCell align="left">
                       <Button
                         variant="contained"
-                        style={{ backgroundColor: "#81B441" }}
+                        style={{ backgroundColor: "#81B441", marginRight:"5px" }}
                       >
-                        <Link to={"/edit/" + row.id}>Edit</Link>
+                      <Link style={{textDecoration:"none", color:"#262626"}} to={"/edit/" + row.id}>Edit</Link>
                       </Button>
                       {row.role_id > 1 ? (
                         <Button

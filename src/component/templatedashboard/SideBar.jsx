@@ -28,6 +28,7 @@ const SideBar = (props) => {
     boxShadow: "15px",
     position: "fixed",
     height: "100%",
+    zIndex:99,
    
   }));
   return (

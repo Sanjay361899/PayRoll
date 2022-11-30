@@ -6,8 +6,10 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 export default function Profile({ open }) {
+  const employee_id=localStorage.getItem("user_id");
   return (
     <div style={{display:"flex", justifyContent:"center", height:"100vh" }}>
       <Box
@@ -38,7 +40,7 @@ export default function Profile({ open }) {
             </Typography>
           </CardContent>
           <CardActions sx={{alignItem:"center", justifyContent:"center"}}>
-            <Button variant="contained" size="small">Update Details</Button>
+            <Button variant="contained" style={{color:"white", backgroundColor:"#81B441"}} size="small"><Link style={{color:"white", backgroundColor:"#81B441", textDecoration:"none"}} to={`/edit/${employee_id}`} >Update Details</Link></Button>
           </CardActions>
         </Card>
       </Box>
