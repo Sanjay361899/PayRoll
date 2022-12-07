@@ -53,7 +53,7 @@ export default function UserDetail({ open }) {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Employee Id</TableCell>
+                  <TableCell >Employee Id</TableCell>
                   <TableCell align="left">Name</TableCell>
                   <TableCell align="left">Email</TableCell>
                   <TableCell align="left"><Button variant="outlined" component="label" >Action</Button></TableCell>
@@ -65,11 +65,12 @@ export default function UserDetail({ open }) {
                     key={i}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
-                      {row.id}
+                    <TableCell component="th" scope="row"><Link style={{color:"#262626",textDecoration:"none"}} to={`/edit/${row.id}`} >
+                      {row.id}</Link>
                     </TableCell>
-                    <TableCell align="left">{row.name}</TableCell>
-                    <TableCell align="left">{row.email}</TableCell>
+                    <TableCell align="left"><Link style={{color:"#262626", textDecoration:"none"}} to={`/edit/${row.id}`} >{row.name}</Link>
+                    </TableCell>
+                    <TableCell align="left"><Link style={{color:"#262626", textDecoration:"none"}} to={`/edit/${row.id}`} >{row.email}</Link></TableCell>
                     <TableCell align="left">
                       <Button
                         variant="contained"

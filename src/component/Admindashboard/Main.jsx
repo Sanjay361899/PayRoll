@@ -5,51 +5,74 @@ import GroupIcon from "@mui/icons-material/Group";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import axios from "axios";
+import { format } from "date-fns";
+const Main = ({ open }) => {
+  const [punchTime, setPunchTime] = useState("");
+  const [punch, setPunch] = useState(true);
+  const [ip, setIP] = useState("");
 
-const Main = ({open}) => {
+  useEffect(() => {
+    setPunchTime(format(new Date(), "yyyy-MM-dd kk:mm:ss"));
+    axios.get("https://geolocation-db.com/json/").then((res) => {
+      console.log(res, "ip address");
+      setIP(res.data.IPv4);
+    });
+  }, []);
+
   const totalEmployeesExist = JSON.parse(
     localStorage.getItem("allEmployeesData")
   )
     ? JSON.parse(localStorage.getItem("allEmployeesData"))
     : 0;
-  const [punchTime, setPunchTime] = useState();
-  const [punch, setPunch] = useState(true);
-  const [ip, setIP] = useState('');
 
-  //creating function to load ip address from the API
-  const getData = async () => {
-    const res = await axios.get('https://geolocation-db.com/json/')
-    console.log(res.data);
-    setIP(res.data.IPv4)
-  }
+  //posting attendance in an api
+  const setApi = async () => {
+    await axios.post(
+      "http://3.108.151.73/api/employees-attendence",
+      {
+        punch_in: punchTime,
+        punch_in_ip: ip,
+        id: localStorage.getItem("user_id"),
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+  };
+
+
   
-  useEffect( () => {
-    //passing getData method to the lifecycle method
-    getData()
-
-  }, [])
-
   return (
     <Box
       component="div"
       className="main-dash"
-      sx={{marginLeft:!open?"200px":"50px", padding: "1px 16px", position: "relative" }}
+      sx={{
+        marginLeft: !open ? "200px" : "50px",
+        padding: "1px 16px",
+        position: "relative",
+      }}
     >
       <Button
-        sx={{ position: "absolute", right: "30px", top: "10px" , backgroundColor:"#262626" }}
+        sx={{
+          position: "absolute",
+          right: "30px",
+          top: "10px",
+          backgroundColor: "#262626",
+        }}
         onClick={() => {
-          setPunchTime(new Date().toLocaleString());
           setPunch(!punch);
+          setApi();
         }}
         variant="contained"
         color={punch ? "success" : "secondary"}
       >
         {punch ? "punchIn" : "punchOut"}
       </Button>
-      {!punchTime
-        ? console.log("nothing in punchTime")
-        : console.log("punchTime time", punchTime)}
-
+      {punchTime && console.log("punchTime time", punchTime)}
+      {ip && console.log(ip)}
       <Box
         component="div"
         sx={{
@@ -73,7 +96,10 @@ const Main = ({open}) => {
                 <Typography variant="body2">
                   <GroupIcon />
                 </Typography>
-                 <Typography style={{color:"#53933C"}}> {totalEmployeesExist.data.length} </Typography>
+                <Typography style={{ color: "#53933C" }}>
+                  {" "}
+                  {totalEmployeesExist.data.length}{" "}
+                </Typography>
               </CardContent>
             </Card>
             <Card sx={{ maxWidth: 1200, flexGrow: 1, ml: 2, mt: 2 }}>

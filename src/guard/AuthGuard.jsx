@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext,  useState } from "react";
+import { createContext,  useEffect,  useState } from "react";
 import {  useNavigate } from "react-router-dom";
 const AuthGuard = createContext();
 export default AuthGuard;
@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
   let [user, setUser] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : null
   );
+
   const navigate = useNavigate("");
   let loginUser = async (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("role_id", data.personalUserData[0].role_id);
         localStorage.setItem("user_id",data.personalUserData[0].id)
+        localStorage.setItem("user_data",JSON.stringify(data.personalUserData[0]));
         setRoleid(localStorage.getItem("role_id"));
         setUser(localStorage.getItem("token"));
         navigate("/");
@@ -39,10 +41,10 @@ export const AuthProvider = ({ children }) => {
   };
   let RegisterUser = async (e) => {
     e.preventDefault();
-    console.log(
-      "register authguard+++++++++++++++++++++++++++++++++++",
-      e.target.profile_picture.value
-    );
+    // console.log(
+    //   "register authguard+++++++++++++++++++++++++++++++++++",
+    //   e.target.profile_picture.value
+    // );
     await axios
       .post(
         "http://3.108.151.73/api/employees",

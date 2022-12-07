@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box } from "@mui/system";
-
 import axios from "axios";
-import { Password } from "@mui/icons-material";
 const EditUserDetail = ({ open }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -91,8 +89,8 @@ const EditUserDetail = ({ open }) => {
       className="main-dash"
       sx={{ marginLeft: !open ? "200px" : "50px", padding: "1px 16px" }}
     >
-  <div class="container">
-  <div class="row">
+  <div className="container">
+  <div className="row">
       <form
         style={{
           display: "flex",
@@ -103,99 +101,99 @@ const EditUserDetail = ({ open }) => {
         onSubmit={handleEditForm}
       >
    
-    <h2 class="text-center my-3">Edit Employees Details</h2>
-      <div class="row">
-        <div class="form-group col-md-3">
-          <label for="exampleInputEmail1 ">Name</label>
-          <input onChange={handleChange} type="text" value={name} name="name" class="form-control"  />
+    <h2 className="text-center my-3">Edit Employees Details</h2>
+      <div className="row">
+        <div className="form-group col-md-3">
+          <label >Name</label>
+          <input onChange={handleChange} type="text" value={name} name="name" className="form-control"  />
         </div>
-        {/* <div class="col-md-1"></div> */}
-     {roleid<2 &&   <div class="form-group col-md-4">
-          <label for="exampleInputPassword1">Role Id</label>
-          <input onChange={handleChange} value={role_id} type="number" name="role_id" class="form-control"  />
+        {/* <div classNameName="col-md-1"></div> */}
+     {roleid<2 &&   <div className="form-group col-md-4">
+          <label >Role Id</label>
+          <input onChange={handleChange} value={role_id} type="number" name="role_id" className="form-control"  />
         </div>}
-        <div class="col-md-1"></div>
-        <div class="form-group col-md-3">
-          <label for="exampleInputPassword1">Email</label>
-          <input onChange={handleChange} type="email" value={email} name="email" class="form-control"    placeholder="abc@gmail.com"/>
+        <div className="col-md-1"></div>
+        <div className="form-group col-md-3">
+          <label >Email</label>
+          <input onChange={handleChange} type="email" value={email} name="email" className="form-control"    placeholder="abc@gmail.com"/>
         </div>
       
 
-      {/* <div class="form-group col-md-4 my-3">
-        <label for="exampleInputEmail1 ">Password</label>
-        <input onChange={handleChange} value={Password} type="password" class="form-control" />
+      {/* <div className="form-group col-md-4 my-3">
+        <label  ">Password</label>
+        <input onChange={handleChange} value={Password} type="password" className="form-control" />
       </div> */}
-      {/* <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Confirm Password</label>
-        <input onChange={handleChange} type="password_confirmation " class="form-control"  />
+      {/* <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label rd1">Confirm Password</label>
+        <input onChange={handleChange} type="password_confirmation " className="form-control"  />
       </div> */}
-      <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Date Of Birth</label>
-        <input onChange={handleChange} type="date" class="form-control" value={date_of_birth} name="date_of_birth"  placeholder="YYYY/MM/DD"/>
+      <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label >Date Of Birth</label>
+        <input onChange={handleChange} type="date" className="form-control" value={date_of_birth} name="date_of_birth"  placeholder="YYYY/MM/DD"/>
       </div>
 
-      <div class="form-group col-md-4 my-3">
-        <label for="exampleInputEmail1 ">Address</label>
-        <input onChange={handleChange} value={address} type="varchar" name="address" class="form-control" />
+      <div className="form-group col-md-4 my-3">
+        <label  >Address</label>
+        <input onChange={handleChange} value={address} type="varchar" name="address" className="form-control" />
       </div>
-      <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Contact Number</label>
-        <input onChange={handleChange} type="number" value={contact_number} name="contact_number" class="form-control"  />
+      <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label >Contact Number</label>
+        <input onChange={handleChange} type="number" value={contact_number} name="contact_number" className="form-control"  />
       </div>
-      <div class="col-md-1"></div>
-      {roleid<3 &&<div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Emergency Contact Number</label>
-        <input onChange={handleChange} value={emergency_contact_number} type="text" name="emergency_contact_number" class="form-control"    />
+      <div className="col-md-1"></div>
+      {roleid<3 &&<div className="form-group col-md-3 my-3">
+        <label >Emergency Contact Number</label>
+        <input onChange={handleChange} value={emergency_contact_number} type="text" name="emergency_contact_number" className="form-control"/>
       </div>}
 
-      {roleid<3 &&  <div class="form-group col-md-4 my-3">
-        <label for="exampleInputEmail1 ">Employee ID </label>
-        <input onChange={handleChange} value={employee_id} type="varchar" name="employee_id" class="form-control" />
+      {roleid<3 &&  <div className="form-group col-md-4 my-3">
+        <label  >Employee ID </label>
+        <input onChange={handleChange} value={employee_id} type="varchar" name="employee_id" className="form-control"/>
       </div>}
-      <div class="col-md-1"></div>
-      {roleid<3 && <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Designation ID</label>
-        <input onChange={handleChange} type="varchar" value={designation_id} name="designation_id" class="form-control" />
+      <div className="col-md-1"></div>
+      {roleid<3 && <div className="form-group col-md-3 my-3">
+        <label >Designation ID</label>
+        <input onChange={handleChange} type="varchar" value={designation_id} name="designation_id" className="form-control" />
       </div>}
-        <div class="col-md-1"></div>
-        {roleid<3 && <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Department ID</label>
-        <input onChange={handleChange} type="varchar" value={department_id} name="department_id" class="form-control" />
+        <div className="col-md-1"></div>
+        {roleid<3 && <div className="form-group col-md-3 my-3">
+        <label >Department ID</label>
+        <input onChange={handleChange} type="varchar" value={department_id} name="department_id" className="form-control" />
       </div>}
       
 
-      {roleid<3 &&  <div class="form-group col-md-4 my-3">
-        <label for="exampleInputEmail1 ">Employee Status ID </label>
-        <input onChange={handleChange} value={employee_status_id} type="varchar" name="employee_status_id" class="form-control" />
+      {roleid<3 &&  <div className="form-group col-md-4 my-3">
+        <label >Employee Status ID </label>
+        <input onChange={handleChange} value={employee_status_id} type="varchar" name="employee_status_id" className="form-control" />
       </div>}
-      <div class="col-md-1"></div>
-      {roleid<3 &&<div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Gender </label>
-        <input onChange={handleChange} value={gender} type="text" name="gender" class="form-control"/>
+      <div className="col-md-1"></div>
+      {roleid<3 &&<div className="form-group col-md-3 my-3">
+        <label >Gender </label>
+        <input onChange={handleChange} value={gender} type="text" name="gender" className="form-control"/>
       </div>}
-      <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">About Me</label>
-        <input onChange={handleChange} value={about_me} type="text" name="about_me" class="form-control" />
+      <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label >About Me</label>
+        <input onChange={handleChange} value={about_me} type="text" name="about_me" className="form-control" />
       </div>
 
 
-      {/* <div class="form-group col-md-4 my-3">
-        <label for="exampleInputEmail1 ">Gender</label>
-        <input onChange={handleChange} type="password" class="form-control"/>
+      {/* <div className="form-group col-md-4 my-3">
+        <label  ">Gender</label>
+        <input onChange={handleChange} type="password" className="form-control"/>
       </div> */}
-      {/* <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">About Me </label>
-        <input onChange={handleChange} type="password_confirmation " class="form-control"/>
+      {/* <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label rd1">About Me </label>
+        <input onChange={handleChange} type="password_confirmation " className="form-control"/>
       </div> */}
-      {/* <div class="col-md-1"></div>
-      <div class="form-group col-md-3 my-3">
-        <label for="exampleInputPassword1">Profile Picture</label>
-        <input onChange={handleChange} type="file" class="form-control" />
+      {/* <div className="col-md-1"></div>
+      <div className="form-group col-md-3 my-3">
+        <label rd1">Profile Picture</label>
+        <input onChange={handleChange} type="file" className="form-control" />
       </div> */}
 
     </div>

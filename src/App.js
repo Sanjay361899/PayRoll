@@ -10,7 +10,7 @@ import AddMember from "./pages/DashBoard/AddMember";
 import NotFound from "./component/NotFound/NotFound";
 import EditMember from "./pages/DashBoard/EditMember";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <AuthProvider>
@@ -22,12 +22,10 @@ function App() {
             <Route element={<AddMember />} path="/signup" />
             <Route element={<EditMember />} path="/edit/:id" />
           </Route>
-          <Route element={<Login/>} path="/login" />
-          <Route element={<NotFound/>} path="*"/>
+          <Route element={<Login />} path="/login" />
+          <Route element={<NotFound />} path="*" />
         </Routes>
       </AuthProvider>
     </div>
-  );
+  )
 }
-
-export default App;

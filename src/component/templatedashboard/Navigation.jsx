@@ -59,7 +59,7 @@ const Navigation = () => {
         <Typography
           sx={{ display: { xs: "none", sm: "block" }, color: "#81B441", }}
         >
-          PayRol
+        PayRol
         </Typography>
         <CameraRollIcon sx={{ display: { xs: "block", sm: "none" } }} />
         <Search>
@@ -96,8 +96,8 @@ const Navigation = () => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
+        <MenuItem><Link style={{textDecoration:"none", color:"#262626"}} to="/profile">Profile</Link></MenuItem>
+        <MenuItem><Link style={{textDecoration:"none", color:"#262626"}} to="/">My account</Link></MenuItem>
         <MenuItem onClick={Logout}>Logout</MenuItem>
       </Menu>
     </AppBar>
